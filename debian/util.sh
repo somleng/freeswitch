@@ -506,7 +506,7 @@ build_all () {
         for arch in $archs; do
           {
             echo "Building $distro-$arch debs..." >&2
-            local changes="$(build_debs $lopts $deb_opts $distro $dsc $arch 2>&1 | tee ../log/$distro-$arch.txt | tail -n1)"
+            local changes="$(build_debs $lopts $deb_opts $distro $dsc $arch >&2>&1 | tee ../log/$distro-$arch.txt | tail -n100)"
             echo "Done building $distro-$arch debs." >&2
             if [ "${changes:0:2}" = ".." ]; then
               echo "$changes" >> ../log/changes.txt
