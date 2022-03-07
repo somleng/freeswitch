@@ -114,8 +114,6 @@ check_repo_clean () {
     || err "unclean working tree"
   git diff-index --quiet HEAD \
     || err "unclean repository"
-  ! git ls-files --other --error-unmatch . >/dev/null 2>&1 \
-    || err "untracked files or build products present"
 }
 
 get_last_release_ver () {
