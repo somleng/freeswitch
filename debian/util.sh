@@ -451,6 +451,10 @@ build_all () {
   local OPTIND OPTARG
   local orig_opts="" dsc_opts="" deb_opts="" modlist=""
   local archs="" distros="" orig="" depinst=false par=false
+
+  git config --global user.email "build@example.com"
+  git config --global user.name "John Doe"
+
   while getopts 'a:bc:df:ijkK:l:m:no:p:s:tT:u:v:z:' o "$@"; do
     case "$o" in
       a) archs="$archs $OPTARG";;
