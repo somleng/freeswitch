@@ -307,7 +307,7 @@ build_debs () {
       use_custom_sources=false
     fi
     if [[ "$custom_source_file" == "/tmp/fs.sources.list" && ! -e "/tmp/fs.sources.list" ]]; then
-      echo "deb [trusted=yes] http://files.freeswitch.org/repo/deb/freeswitch-1.8/ stretch main" >> "/tmp/fs.sources.list"
+      echo "deb [trusted=yes] https://files.freeswitch.org/repo/deb/freeswitch-1.8/ stretch main" >> "/tmp/fs.sources.list"
     fi
     if [[ "$custom_keyring" == "/tmp/fs.gpg" && ! -r "/tmp/fs.gpg" ]]; then
       cat << EOF > "/tmp/fs.tmp.gpg"
@@ -506,7 +506,7 @@ build_all () {
         for arch in $archs; do
           {
             echo "Building $distro-$arch debs..." >&2
-            local changes="$(build_debs $lopts $deb_opts $distro $dsc $arch 2>../log/$distro-$arch.txt | tail -n1)"
+            local changes="$(build_debs $lopts $deb_opts $distro $dsc $arch 2>&1 | tee ../log/$distro-$arch.txt | tail -n1)"
             echo "Done building $distro-$arch debs." >&2
             if [ "${changes:0:2}" = ".." ]; then
               echo "$changes" >> ../log/changes.txt
