@@ -135,7 +135,7 @@ create_orig () {
   {
     set -e
     local OPTIND OPTARG
-    local uver="" hrev="" bundle_deps=true modules_list="" zl=9e
+    local uver="" hrev="" bundle_deps=false modules_list="" zl=9e
     while getopts 'bm:nv:z:' o "$@"; do
       case "$o" in
         m) modules_list="$OPTARG";;
@@ -152,7 +152,7 @@ create_orig () {
     local treeish="$1" dver="$(mk_dver "$uver")"
     local orig="../freeswitch_$dver~$(lsb_release -sc).orig.tar.xz"
     [ -n "$treeish" ] || treeish="HEAD"
-    check_repo_clean
+    # check_repo_clean
     git reset --hard "$treeish"
     mv .gitattributes .gitattributes.orig
     local -a args=(-e '\bdebian-ignore\b')
@@ -162,6 +162,7 @@ create_orig () {
       echo "$l export-ignore" >> .gitattributes
     done
     if $bundle_deps; then
+      echo "Getting libs"
       (cd libs && getlibs)
       git add -f libs
     fi
