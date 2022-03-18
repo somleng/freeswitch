@@ -10,7 +10,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Get yarn cache directory
+      - name: Install build deps
         run: |
           sudo apt-get update
-          sudo apt-get install -y xz-utils devscripts cowbuilder git screen
+          sudo apt-get install -y xz-utils devscripts cowbuilder git
+          echo "ALLOWUNTRUSTED=yes" >> /etc/pbuilderrc
+          ./debian/util.sh build-all build-all -cbullseye -mquicktest -aamd64
