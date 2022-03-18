@@ -13,6 +13,9 @@ jobs:
       - name: Install build deps
         run: |
           sudo apt-get update
-          sudo apt-get install -y xz-utils devscripts cowbuilder git
-          echo "ALLOWUNTRUSTED=yes" >> /etc/pbuilderrc
-          ./debian/util.sh build-all build-all -cbullseye -mquicktest -aamd64
+          sudo apt-get install -y xz-utils devscripts cowbuilder
+          sudo echo "ALLOWUNTRUSTED=yes" >> /etc/pbuilderrc
+
+      - name: Build packages
+        run: |
+          sudo ./debian/util.sh build-all build-all -cbullseye -mquicktest -aamd64
