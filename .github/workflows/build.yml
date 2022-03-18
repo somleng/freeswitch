@@ -13,4 +13,4 @@ jobs:
       - name: Get yarn cache directory
         run: |
           sudo apt-get update
-          apt-get install -y xz-utils devscripts cowbuilder git screen
+          sudo apt-get install -y xz-utils devscripts cowbuilder git screen
