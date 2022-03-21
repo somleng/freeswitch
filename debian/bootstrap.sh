@@ -62,7 +62,7 @@ avoid_mods=(
   xml_int/mod_xml_ldap
   xml_int/mod_xml_radius
 )
-avoid_mods_armhf arm64=(
+avoid_mods_armhf=(
   languages/mod_v8
 )
 avoid_mods_sid=(
