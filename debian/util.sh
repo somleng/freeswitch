@@ -137,7 +137,7 @@ create_orig () {
   {
     set -e
     local OPTIND OPTARG
-    local uver="" hrev="" bundle_deps=true modules_list="" zl=9e
+    local uver="" hrev="" bundle_deps=false modules_list="" zl=9e
     while getopts 'bm:nv:z:' o "$@"; do
       case "$o" in
         m) modules_list="$OPTARG";;
@@ -277,7 +277,7 @@ build_debs () {
     set -e
     local OPTIND OPTARG debug_hook=false hookdir="" cow_build_opts=""
     local keep_pbuilder_config=false keyring="" custom_keyring="/tmp/fs.gpg"
-    local use_custom_sources=true
+    local use_custom_sources=false
     local custom_sources_file="/etc/apt/sources.list"
     while getopts 'BbdK:kT:t' o "$@"; do
       case "$o" in
