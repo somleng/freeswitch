@@ -332,7 +332,7 @@ Build-Depends:
  uuid-dev, libexpat1-dev, libgdbm-dev, libdb-dev,
 # used by many modules
  libcurl4-openssl-dev | libcurl4-gnutls-dev | libcurl-dev,
- bison, zlib1g-dev
+ bison, zlib1g-dev,
 # used to format the private freeswitch apt-repo key properly
  gnupg,
 # module build-depends
