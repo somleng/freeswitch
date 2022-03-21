@@ -394,7 +394,7 @@ EOF
           --distribution $distro \
           --architecture $arch \
           --basepath $cow_img \
-          --othermirror "deb [trusted=yes] file:/opt/local/debs ./"
+          --othermirror "deb [trusted=yes] http://localhost:8000 bullseye main"
       else
         echo "Using custom sources $keyring $distro $custom_sources_file"
         cowbuilder "$@" \
